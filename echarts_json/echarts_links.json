@@ -1,0 +1,46 @@
+[
+    {
+        "source": "1_Arithmetic", 
+        "target": "2_Data-path", 
+        "value": "Scan_count", 
+        "label": {
+            "normal": {
+                "formatter": "Scan_count", 
+                "show": "true"
+            }
+        }
+    }, 
+    {
+        "source": "1_Arithmetic", 
+        "target": "3_Data-path", 
+        "value": "Scan_count", 
+        "label": {
+            "normal": {
+                "formatter": "Scan_count", 
+                "show": "true"
+            }
+        }
+    }, 
+    {
+        "source": "1_Arithmetic", 
+        "target": "4_Multiplexer", 
+        "value": "Scan_count", 
+        "label": {
+            "normal": {
+                "formatter": "Scan_count", 
+                "show": "true"
+            }
+        }
+    }, 
+    {
+        "source": "3_Data-path", 
+        "target": "4_Multiplexer", 
+        "value": "Number_buffer", 
+        "label": {
+            "normal": {
+                "formatter": "Number_buffer", 
+                "show": "true"
+            }
+        }
+    }
+]

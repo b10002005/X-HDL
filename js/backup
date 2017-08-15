@@ -1,0 +1,78 @@
+    /*
+    DDG_option.series.data = [{
+        name: '节点1',
+        x: 300,
+        y: 300
+    }, {
+        name: '节点2',
+        value: '<li>HI <br> XD',
+        
+        tooltip: {
+            show: true,
+            trigger: 'item',
+            formatter: function (params, ticket, callback) {
+                //console.log(params)
+                var res = params.data.value;
+                //callback(ticket, res);
+                return res;
+            }
+
+        },
+        x: 800,
+        y: 300
+    }, {
+        name: '节点3',
+        x: 550,
+        y: 100
+    }, {
+        name: '节点4',
+        x: 550,
+        y: 500
+    }];
+
+    DDG_option.series.links = [{
+        source: '节点3',
+        target: '节点1',
+        value: 'a1',
+        label: {
+            normal: {
+                show: true,
+                formatter: 'dirve31'
+            }
+        },
+        
+        lineStyle: {
+            normal: {
+                curveness: 0.2
+            }
+        }
+            }, {
+        source: '节点1',
+        target: '节点3',
+        value: 'a2',
+        label: {
+            normal: {
+                show: true,
+                formatter: 'dirve13'
+            }
+        },
+        lineStyle: {
+            normal: {
+                curveness: 0.2
+            }
+        }
+            }, {
+        source: '节点2',
+        target: '节点3',
+        value: 'a3',
+        label: {
+            normal: {
+                show: true,
+                formatter: 'dirve23'
+            }
+        }
+            }, {
+        source: '节点1',
+        target: '节点4'
+            }];
+            */

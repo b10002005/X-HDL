@@ -1,0 +1,33 @@
+digraph {
+	"1_State Update"
+	"2_State Update"
+	"3_State Update"
+	"4_State Update"
+	"5_State Update"
+	"6_Data-path"
+	"7_State Update"
+	"8_State Update"
+	"9_Counter"
+	"10_Counter"
+	"11_Counter"
+	"12_State Trasition"
+	"13_State Update"
+	"14_State Update"
+	"15_State Update"
+	"16_Data-path"
+	"17_Counter"
+		"3_State Update" -> "4_State Update" [label=finish]
+		"5_State Update" -> "6_Data-path" [label=x]
+		"5_State Update" -> "8_State Update" [label=x]
+		"5_State Update" -> "9_Counter" [label=x]
+		"6_Data-path" -> "15_State Update" [label=da]
+		"6_Data-path" -> "16_Data-path" [label=da]
+		"6_Data-path" -> "17_Counter" [label=da]
+		"8_State Update" -> "9_Counter" [label=pixel_wr]
+		"10_Counter" -> "11_Counter" [label=men_cnt]
+		"12_State Trasition" -> "13_State Update" [label=so_cnt]
+		"13_State Update" -> "14_State Update" [label=ss]
+		"13_State Update" -> "17_Counter" [label=ss]
+		"15_State Update" -> "16_Data-path" [label="t_pi_data t_pi_low t_pi_length t_pi_fill"]
+		"15_State Update" -> "17_Counter" [label="t_pi_msb t_pi_length"]
+}
