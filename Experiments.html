@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="HDL Exploration Web Tool" />
+    <meta name="author" content="YiHong Lu @DVLab" />
+    <title>HDL Exploration by CNN</title>
+    <!-- 引入 echarts.js -->
+    <script src="js/echarts.min.js"></script>
+    <script src="js/myjava.js"></script>
+    <script src="js/require.js"></script>
+
+
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet" />
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="img/favicon.ico" rel="SHORTCUT ICON">
+</head>
+
+<body onload="list_files()" onunload="page_unload()">
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="navbar-brand" href="index.html">X-HDL | DVLab</a>
+            </div>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li> <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> About X-HDL</a> </li>
+                    <li class="active"> <a href="Experiments.html"><i class="fa fa-fw fa-desktop"></i> Experiments</a> </li>
+                    <li> <a href="Datasets.html"><i><span class="fa fa-fw fa-database" aria-hidden="true"></span></i> Datasets</a> </li>
+                    <li> <a href="Trained_Models.html"><i><span class=" glyphicon glyphicon-oil" aria-hidden="true"></span></i> Trained Models</a> </li>
+                    <li> <a href="Settings.html"><i><span class=" glyphicon glyphicon-cog" aria-hidden="true"></span></i> Settings</a> </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header"> <i class="fa fa-fw fa-desktop"></i> Experiments <small>Do It Right Now</small> </h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="col-lg-2">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> My Experiments</h3>
+                        </div>
+                        <div class="panel-body" id="panel_body_database" style="height:480px; padding:0px">
+                            <div class="list-group" id="list_group_database" style="overflow-y:scroll; height:450px;">
+                                <!--
+                                    <button type="button" id="btn_database" class="list-group-item">Key_pad.v</button> 
+                                    <button type="button" class="list-group-item active">Seven_SEG.v</button> 
+                                    <button type="button" class="list-group-item">STI_DAC_07.v</button> 
+                                    <button type="button" class="list-group-item">VGA_Timing.v</button> 
+                                    -->
+                            </div>
+                        </div>
+                        <div class="panel-body" style="padding:15px">
+                            <div class="text-right">
+                                <a href="Datasets.html">Upload HDL <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Analysis Result
+                                <!--
+                                <div style="float:right;">
+                                    <a style="color:white;"><i class="glyphicon glyphicon-resize-full" data-toggle="modal" data-target=".bs-example-modal-lg"></i></a>
+                                </div>
+                                -->
+                            </h3>
+                        </div>
+
+                        <!-- Full Screen-->
+                        <!--
+                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Analysis Result</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="panel-body">
+                                            <div class="col-lg-6">
+                                                <div id="DDG" style="height:500px;">
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <textarea id="rtl_textarea" class="form-control" style="height:500px; white-space:nowrap; overflow-x:scroll;" rows="25" wrap="off" cols="256"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                        <!-- Panel Body-->
+                        <div class="panel-body">
+                            <div class="col-lg-6">
+                                <div id="DDG" style="height:500px;">
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-6">
+                                <textarea id="rtl_textarea" class="form-control lined" style="height:500px; white-space:nowrap; overflow-x:scroll;" rows="25" wrap="off" cols="256">
+                                 
+                                </textarea>
+                     
+                            </div>
+                        </div>
+
+
+                        <!-- Full Screen-->
+                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title">Analysis Result</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="panel-body">
+                                            <div class="col-lg-6">
+                                                <div id="DDG" style="height:500px;">
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <textarea id="rtl_textarea" class="form-control" style="height:500px; white-space:nowrap; overflow-x:scroll;" rows="25" wrap="off" cols="256"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12" style=" padding:0 30px 0px 30px">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Console</h3>
+                            </div>
+                            <div class="panel-body">
+                                <textarea id="Textarea_Console" class="form-control" style="white-space:nowrap; overflow-x:scroll" rows="4" Wrap="Off"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
